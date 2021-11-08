@@ -65,7 +65,7 @@ export default {
             formData.append('oldArtImage', this.album.artImage);
             if(this.$refs.form.validate()){
                 const response = await API.updateAlbum(this.$route.params.id, formData);
-                this.$router.push({ name: 'home', params: { message: response.message}});
+                this.$router.push({ name: 'Home', params: { message: response.message}});
             }
         },
     },

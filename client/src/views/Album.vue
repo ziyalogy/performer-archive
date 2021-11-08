@@ -42,7 +42,7 @@ export default {
     methods:{
         async removeAlbum(id){
             const response = await API.deleteAlbum(id);
-            this.$router.push({ name: 'home', params: { message: response.message}});
+            this.$router.push({ name: 'Home', params: { message: response.message}});
         }
     }
 };

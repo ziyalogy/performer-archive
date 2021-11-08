@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import albums from "../../server/models/albums";
-const url = '/api/album';
+const url = '/api/';
 
 export default class API{
     //To get all albums from the server

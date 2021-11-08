@@ -60,7 +60,7 @@ export default {
 
             if(this.$refs.form.validate()){
                 const response = await API.addAlbum(formData);
-                this.$router.push({ name: 'home', params: { message: response.message}});
+                this.$router.push({ name: 'Home', params: { message: response.message}});
             }
         },
     },
