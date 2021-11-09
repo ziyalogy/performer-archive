@@ -1,65 +1,81 @@
+<style lang="scss">
+@import "./scss/main.scss";
+v-app {
+  font-family: $body-font-family !important;
+}
+
+</style>
+
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" class="lighten-1 secondary" app>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title> UGAAMUX </v-list-item-title>
-          <v-list-item-subtitle> Uganda Artists Archive </v-list-item-subtitle>
+          <v-list-item-title class="white--text font-weight-bold display-1"> ugaamux.ug </v-list-item-title>
+          <v-list-item-subtitle class="white--text font-weight-bold text--disabled">archive of Ugandan performers </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-subheader>Archive Navigation</v-subheader>
-        <v-list-item-group color="primary">
+        <v-subheader class="white--text text--disabled font-weight-bold">Archive Navigation</v-subheader>
+        <v-list-item-group  color="primary">
           <v-list-item v-for="(item, i) in items" :key="i">
             <v-list-item-icon>
-              <v-icon v-text="item.icon"></v-icon>
+              <v-icon class="darken-4 white--text" v-text="item.icon"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title v-text="item.text"></v-list-item-title>
+              <v-list-item-title class="white--text" v-text="item.text"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
       <v-divider></v-divider>
       <v-list dense>
-        <v-subheader>Clerk Account</v-subheader>
+        <v-subheader class="white--text text--disabled font-weight-bold">Clerk Account</v-subheader>
         <v-list-item-group color="primary">
           <v-list-item v-for="(page, i) in pages" :key="i">
             <v-list-item-icon>
-              <v-icon v-text="page.icon"></v-icon>
-            </v-list-item-icon>
+              <v-icon class="white--text" v-text="page.icon"></v-icon>
+            </v-list-item-icon >
             <v-list-item-content>
-              <v-list-item-title v-text="page.text"></v-list-item-title>
+              <v-list-item-title class="white--text" v-text="page.text"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
             <v-list dense>
-        <v-subheader>About UGAAMUX</v-subheader>
+        <v-subheader class="white--text font-weight-bold text--disabled">About UGAAMUX</v-subheader>
         <v-list-item-group color="primary">
           <v-list-item v-for="(info, i) in infos" :key="i">
             <v-list-item-icon>
-              <v-icon v-text="info.icon"></v-icon>
+              <v-icon class="white--text" v-text="info.icon"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title v-text="info.text"></v-list-item-title>
+              <v-list-item-title class="white--text" v-text="info.text"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar color="secondary" app>
+      <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title class="white--text">Home</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
      <router-view></router-view>
     </v-main>
+      <v-footer padless>
+    <v-col
+      class="text-right"
+      cols="12"
+    >
+     <small>Built by @ziyalogy with a cat's curiosity powered by NodeJS, Express, MongoDB and VueJS</small>
+    </v-col>
+  </v-footer>
   </v-app>
 </template>
 
