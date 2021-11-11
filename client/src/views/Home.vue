@@ -1,5 +1,5 @@
 <template v-slot:default="{ hover }">
-  <v-container>
+  <v-container fluid>
     <v-row dense>
       <v-alert
         v-model="alert"
@@ -8,43 +8,53 @@
         color="accent"
         dark
         dismissible
+        class="white--text darken-4"
       >
-        The task is to create a national performing artists' archive for the National Cultural Center in
-        conjuction with Uganda Perfrming Arts Association of Uganda. The system should cover performing artists, bands and record lables.
+        The task is to create a national performing artists' archive for the
+        National Cultural Center in conjuction with Uganda Perfrming Arts
+        Association of Uganda. The system should cover performing artists, bands
+        and record lables.
       </v-alert>
     </v-row>
-
-    <v-row dense>
-      <v-col cols="6">
-        <v-card color="#385F73" dark>
-          <v-card-title class="text-h5"> HIRING: Data Clerks </v-card-title>
+    <v-row dense align="stretch">
+      
+      
+      <v-col class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+        <v-card outlined color="secondary" dark>
+          <v-card-title class="text-h5"> We are hiring Data Clerks </v-card-title>
 
           <v-card-subtitle
-            >UgaaMUX is the largest archive of information on Ugandan performers, bands and record label. We are growing and are in need of data clerks.</v-card-subtitle
+            >UgaaMUX is the largest archive of information on Ugandan
+            performers, bands and record label. We are growing and are in need
+            of data clerks.</v-card-subtitle
           >
 
           <v-card-actions>
-            <v-btn class="primary" text> Apply Today </v-btn>
+            <v-btn class="secondary lighten-1" text> Apply Today </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
-      <v-col cols="6">
-        <v-card color="#385F73" dark>
-          <v-card-title class="text-h5"> Add your legacy to the record! </v-card-title>
+      <v-col class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+        <v-card color="secondary" dark>
+          <v-card-title class="text-h5">
+            Add your legacy to the record!
+          </v-card-title>
 
           <v-card-subtitle
-            >Are you a performing artist in Uganda? UgaaMUX looks forward to adding your legendary name to our growing archive.</v-card-subtitle
+            >Are you a performing artist in Uganda? UgaaMUX looks forward to
+            adding your legendary name to our growing archive.</v-card-subtitle
           >
 
           <v-card-actions>
-            <v-btn class="primary" text> Add your profile </v-btn>
+            <v-btn class="secondary lighten-1" text> Add your profile </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
+       
     </v-row>
 
-    <v-row>
-      <v-col class="mt-2 mx-auto" cols="4">
+    <v-layout row wrap>
+      <v-col class="mt-2" cols="4">
         <v-card :to="{ name: 'artists' }" class="mx-auto">
           <v-card-title class="secondary white--text"
             >Artists and Performers</v-card-title
@@ -56,8 +66,8 @@
           >
           </v-img>
 
-          <v-btn class="ml-4" small color="secondary">
-            Explore 6,760 performers
+          <v-btn class="ml-4" outlined small color="secondary">
+            Discover {{ artists.length }} performers
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -80,8 +90,8 @@
           >
           </v-img>
 
-          <v-btn class="ml-4" small color="secondary">
-            Explore 1,000 bands
+          <v-btn class="ml-4" outlined small color="secondary">
+            Explore {{ bands.length }} bands
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -104,8 +114,8 @@
           >
           </v-img>
 
-          <v-btn class="ml-4" small color="secondary">
-            Explore 30 Labels
+          <v-btn flat outlined class="ml-4" small color="secondary">
+            Explore {{ labels.length }} Labels
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -117,12 +127,26 @@
           </v-card-text>
         </v-card>
       </v-col>
-    </v-row>
+    </v-layout>
   </v-container>
 </template>
 <script>
+import API from '../api';
 export default {
-  name: 'Home',
-  overlay: false,
+  data() {
+    return {
+      artists: [],
+      bands: [],
+      labels: [],
+    };
+  },
+  async created() {
+    this.artists = await API.getAllArtists();
+    this.bands = await API.getAllBands();
+    this.labels = await API.getAllLabels();
+  },
+  
 };
+
+
 </script>
