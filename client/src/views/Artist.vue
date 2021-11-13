@@ -2,7 +2,7 @@
   <v-container>
     <v-row justify="space-around" class="mt-4 ml-4 mr-4">
       <v-col cols="12" sm="6" md="8">
-        <v-card width="auto">
+        <v-card color="primary" flat width="auto">
           <v-img
             cover
             height="200px"
@@ -20,37 +20,22 @@
                   <v-img :src="`/${artist.artistImage}`"></v-img>
                 </v-avatar>
               </div>
-              <div v-else>
-                <div class="v-list-item__icon">
-                  <i
-                    aria-hidden="true"
-                    class="
-                      v-icon
-                      notranslate
-                      darken-4
-                      display-4
-                      textcolor--text
-                      mdi mdi-account-tie-voice-outline
-                      theme--light
-                    "
-                  ></i>
-                </div>
-              </div>
             </v-card-title>
           </v-img>
 
           <v-card-text>
             <div
               v-if="artist.stageName"
-              class="font-weight-bold ml-0 secondary--text mb-2"
+              class="font-weight-bold ml-0 white--text mb-2"
             >
-              <h3>
+              <h2>
                 {{ artist.firstName }} {{ artist.middleName }}
-                {{ artist.lastName }} {{ artist.otherName }} known
-                professionally as "{{ artist.stageName }}".
-              </h3>
+                {{ artist.lastName }} {{ artist.otherName }} a.k.a "{{
+                  artist.stageName
+                }}".
+              </h2>
             </div>
-            <div v-else class="font-weight-bold ml-0 secondary--text mb-2">
+            <div v-else class="font-weight-regular ml-0 white--text mb-2">
               <h1>
                 {{ artist.firstName }} {{ artist.middleName }}
                 {{ artist.lastName }} {{ artist.otherName }}
@@ -58,36 +43,133 @@
             </div>
           </v-card-text>
         </v-card>
-        <v-card class="mx-auto mt-4" width="auto">
-          <v-card-text>
-            <h3 class="dark--text mb-4">Born: {{ artist.dateOfBirth }}</h3>
-            <h3 class="dark--text mb-4">
-              Active since: {{ artist.activeSince }}
-            </h3>
-            <h3 class="dark--text mb-4">
-              Genres: {{ artist.genres }}
-            </h3>
-            <h3 class="dark--text mb-4">
-              Associtaed Band/Group: {{ artist.band }}
-            </h3>
-            <h3 class="dark--text mb-4">
-              Albums: {{ artist.albums }}
-            </h3>
-            <h3 class="dark--text mb-4">
-              Signed to: {{ artist.label }}
-            </h3>
 
-            <div class="text--primary">
-              {{ artist.bio }}
-            </div>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn text color="secondary accent-4"> Share </v-btn>
-          </v-card-actions>
+        <v-card class="mt-4">
+          <v-card-title class="secondary lighten-1">
+            <span class="text-h6 white--text">Summary</span>
+            <v-spacer></v-spacer>
+          </v-card-title>
+
+          <v-list>
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text lighten-1">mdi-calendar</v-icon>
+              </v-list-item-action> 
+
+              <v-list-item-content>
+                <v-list-item-title><strong>Birthdate: </strong>{{ artist.dateOfBirth }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text">mdi-calendar</v-icon>
+              </v-list-item-action>
+
+              <v-list-item-content>
+                <v-list-item-title><strong>Active since:</strong> {{ artist.activeSince }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text">mdi-music-circle</v-icon>
+              </v-list-item-action>
+
+              <v-list-item-content>
+                <v-list-item-title><strong>Genres: </strong>{{ artist.genres }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text">mdi-account-multiple</v-icon>
+              </v-list-item-action>
+
+              <v-list-item-content>
+                <v-list-item-title><strong>Band: </strong>{{ artist.band }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider inset></v-divider>
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text">mdi-music-box-multiple</v-icon>
+              </v-list-item-action>
+
+              <v-list-item-content>
+                <v-list-item-title
+                  ><strong>Albums:</strong><v-chip class="ma-2" color="primary">
+                    {{ artist.albums }}
+                  </v-chip></v-list-item-title
+                >
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider inset></v-divider>
+            <v-list-item>
+              <v-list-item-action>
+                <v-icon class="secondary--text">mdi-folder-music</v-icon>
+              </v-list-item-action>
+
+              <v-list-item-content>
+                <v-list-item-title><strong>Label: </strong>{{ artist.label }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider inset></v-divider>
+            <v-list-item>
+
+
+              <v-list-item-content><div >
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Biography
+        </v-btn>
+      </template>
+
+      <v-card class="mt-4">
+        <v-card-title class="text-h5 white--text darken-2 primary">
+          {{ artist.firstName }} {{ artist.lastName }} Biography
+        </v-card-title>
+
+        <v-card-text class="mt-4">
+{{ artist.bio }}        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div> </v-list-item-content>
+            </v-list-item>
+          </v-list>
+          
         </v-card>
       </v-col>
-      <v-col cols="6" md="4">
-        <v-card width="auto" class="mx-auto">
+      <v-col cols="6"  md="4">
+        <v-card >
           <div v-if="artist.artistImage">
             <v-img :src="`/${artist.artistImage}`" height="300px" dark> </v-img>
           </div>
@@ -95,11 +177,11 @@
           <v-list two-line>
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-email </v-icon>
+                <v-icon color="primary"> mdi-email </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title class="text-transform-capitalize">{{
+                <v-list-item-title color="primary">{{
                   artist.artistID
                 }}</v-list-item-title>
                 <v-list-item-subtitle>UgaaMUX Artist ID</v-list-item-subtitle>
@@ -107,11 +189,13 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-phone </v-icon>
+                <v-icon color="primary"> mdi-phone </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{ artist.nationalID }}</v-list-item-title>
+                <v-list-item-title color="primary">{{
+                  artist.nationalID
+                }}</v-list-item-title>
                 <v-list-item-subtitle>National ID Number</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -120,11 +204,13 @@
 
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-email </v-icon>
+                <v-icon color="primary"> mdi-email </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{ artist.district }}</v-list-item-title>
+                <v-list-item-title color="primary">{{
+                  artist.district
+                }}</v-list-item-title>
                 <v-list-item-subtitle>Location</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -133,7 +219,7 @@
 
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-map-marker </v-icon>
+                <v-icon color="primary"> mdi-map-marker </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -143,7 +229,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-phone </v-icon>
+                <v-icon color="primary"> mdi-phone </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -155,7 +241,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-icon>
-                <v-icon color="accent"> mdi-phone </v-icon>
+                <v-icon color="primary"> mdi-phone </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -179,6 +265,7 @@ export default {
   data() {
     return {
       artist: {},
+      dialog: false,
     };
   },
   async created() {

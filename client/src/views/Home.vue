@@ -5,58 +5,20 @@
         v-model="alert"
         border="bottom"
         close-text="Close Alert"
-        color="accent"
+        color="primary"
         dark
         dismissible
-        class="white--text darken-4"
+        class="dark--text darken-1"
       >
-        The task is to create a national performing artists' archive for the
-        National Cultural Center in conjuction with Uganda Perfrming Arts
-        Association of Uganda. The system should cover performing artists, bands
-        and record lables.
+        A national performing artists' archive for the
+        National Cultural Center in conjuction with Uganda Performing Arts
+        Association of Uganda. 
       </v-alert>
     </v-row>
-    <v-row dense align="stretch">
-      
-      
-      <v-col class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-        <v-card outlined color="secondary" dark>
-          <v-card-title class="text-h5"> We are hiring Data Clerks </v-card-title>
-
-          <v-card-subtitle
-            >UgaaMUX is the largest archive of information on Ugandan
-            performers, bands and record label. We are growing and are in need
-            of data clerks.</v-card-subtitle
-          >
-
-          <v-card-actions>
-            <v-btn class="secondary lighten-1" text> Apply Today </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-      <v-col class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-        <v-card color="secondary" dark>
-          <v-card-title class="text-h5">
-            Add your legacy to the record!
-          </v-card-title>
-
-          <v-card-subtitle
-            >Are you a performing artist in Uganda? UgaaMUX looks forward to
-            adding your legendary name to our growing archive.</v-card-subtitle
-          >
-
-          <v-card-actions>
-            <v-btn class="secondary lighten-1" text> Add your profile </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-       
-    </v-row>
-
     <v-layout row wrap>
-      <v-col class="mt-2" cols="4">
+      <v-col class="mt-1" cols="4">
         <v-card :to="{ name: 'artists' }" class="mx-auto">
-          <v-card-title class="secondary white--text"
+          <v-card-title class="primary darken-2 white--text"
             >Artists and Performers</v-card-title
           >
           <v-img
@@ -66,7 +28,7 @@
           >
           </v-img>
 
-          <v-btn class="ml-4" outlined small color="secondary">
+          <v-btn class="ml-4" outlined small color="primary">
             Discover {{ artists.length }} performers
           </v-btn>
 
@@ -80,7 +42,7 @@
       </v-col>
       <v-col class="mt-2 mx-auto" cols="4">
         <v-card :to="{ name: 'bands' }" class="mx-auto">
-          <v-card-title class="secondary white--text"
+          <v-card-title class="primary darken-2 white--text"
             >Bands and Music Groups
           </v-card-title>
           <v-img
@@ -90,7 +52,7 @@
           >
           </v-img>
 
-          <v-btn class="ml-4" outlined small color="secondary">
+          <v-btn class="ml-4" outlined small color="primary">
             Explore {{ bands.length }} bands
           </v-btn>
 
@@ -104,7 +66,7 @@
       </v-col>
       <v-col class="mt-2 mx-auto" cols="4">
         <v-card :to="{ name: 'labels' }" class="mx-auto">
-          <v-card-title class="secondary white--text"
+          <v-card-title class="primary darken-2  white--text"
             >Record Labels and Distribution
           </v-card-title>
           <v-img
@@ -114,7 +76,7 @@
           >
           </v-img>
 
-          <v-btn flat outlined class="ml-4" small color="secondary">
+          <v-btn flat outlined class="ml-4" small color="primary">
             Explore {{ labels.length }} Labels
           </v-btn>
 

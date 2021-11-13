@@ -9,24 +9,24 @@ v-app {
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
-      class="dark--text darken-3 accent"
+      class="dark--text primary darken-1"
       app
     >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title
-            class="
-              text-center
+            class="appname
+              text-left
               white--text
-              accent--text
+              darken-2
               font-weight-bold
               display-1
             "
           >
-            UgaaMux.v1</v-list-item-title
+            UgaaMux</v-list-item-title
           >
           <v-list-item-subtitle
-            class="text-center font-weight-bold accent--text"
+            class="text-left font-weight-bold lighten-2 white--text"
             >From the pearl.
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -112,7 +112,7 @@ v-app {
     <v-footer padless>
       <v-col class="font-weight-bold text--disabled text-right" cols="12">
         <small
-          >Built by @ziyalogy with a cat's curiosity powered by NodeJS, Express,
+          >Built by <a target="new" class="text-decoration-none" href="https://www.ziyalogy.xyz">@ziyalogy</a> with a cat's curiosity powered by NodeJS, Express,
           MongoDB and VueJS</small
         >
       </v-col>
@@ -160,7 +160,23 @@ export default {
 };
 </script>
 <style>
-body{
-  font-family: 'DM Sans', sans-serif !important;
+  .v-application {
+    font-family: "DM Sans", sans-serif!important;
+    font-size: 18px !important;
+    line-height: 1.5;
+    color: #616161;
 }
+.headline,
+.title,
+.subheading{
+     font-family:'DM Sans', sans-serif !important;
+}
+.appname {
+    font-size: 2.125rem !important;
+    font-weight: 400;
+    line-height: 2.5rem;
+    letter-spacing: 0.0073529412em !important;
+    font-family: "Aladin", sans-serif !important;
+}
+
 </style>
