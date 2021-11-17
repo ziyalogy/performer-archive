@@ -12,25 +12,7 @@ v-app {
       class="dark--text primary darken-1"
       app
     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title
-            class="appname
-              text-left
-              white--text
-              darken-2
-              font-weight-bold
-              display-1
-            "
-          >
-            UgaaMux</v-list-item-title
-          >
-          <v-list-item-subtitle
-            class="text-left font-weight-bold lighten-2 white--text"
-            >From the pearl.
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+
       <v-divider></v-divider>
 
       <v-list dense>
@@ -103,7 +85,25 @@ v-app {
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="white--text">Archive of Ugandan performers.</v-toolbar-title>
+      <v-toolbar-title class="white--text">
+              <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title
+            class="
+              appname
+              text-left
+              white--text
+              darken-2
+              font-weight-bold
+              display-1
+            "
+          >
+            UgaaMux</v-list-item-title
+          >
+        </v-list-item-content>
+      </v-list-item>
+        </v-toolbar-title
+      >
     </v-app-bar>
 
     <v-main>
@@ -112,8 +112,14 @@ v-app {
     <v-footer padless>
       <v-col class="font-weight-bold text--disabled text-right" cols="12">
         <small
-          >Built by <a target="new" class="text-decoration-none" href="https://www.ziyalogy.xyz">@ziyalogy</a> with a cat's curiosity powered by NodeJS, Express,
-          MongoDB and VueJS</small
+          >Built by
+          <a
+            target="new"
+            class="text-decoration-none"
+            href="https://www.ziyalogy.xyz"
+            >@ziyalogy</a
+          >
+          in MEVN</small
         >
       </v-col>
     </v-footer>
@@ -139,11 +145,15 @@ export default {
       },
       { text: 'Albums', icon: 'mdi-record-circle-outline', link: '/albums' },
       { text: 'Songs', icon: 'mdi-music-circle-outline', link: '/songs' },
+      {
+        text: 'Add Album',
+        icon: 'mdi-music-circle-outline',
+        link: '/dashboard/add/album',
+      },
     ],
     pages: [
-      { text: 'Sign In', icon: 'mdi-login-variant', link: '/sign-in' },
+      { text: 'Sign In', icon: 'mdi-login-variant', link: '/account' },
       { text: 'Sign Up', icon: 'mdi-account-plus-outline', link: '/join' },
-      { text: 'Password Reset', icon: 'mdi-lock-reset', link: '/reset' },
     ],
     infos: [
       {
@@ -160,23 +170,25 @@ export default {
 };
 </script>
 <style>
-  .v-application {
-    font-family: "DM Sans", sans-serif!important;
-    font-size: 18px !important;
-    line-height: 1.5;
-    color: #616161;
+.v-application {
+  font-family: 'Titillium Web', sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1.8;
+  color: #3c3c3c;
 }
 .headline,
 .title,
-.subheading{
-     font-family:'DM Sans', sans-serif !important;
+.subheading {
+  font-family: 'Titillium Web', sans-serif !important;
 }
-.appname {
-    font-size: 2.125rem !important;
-    font-weight: 400;
-    line-height: 2.5rem;
-    letter-spacing: 0.0073529412em !important;
-    font-family: "Aladin", sans-serif !important;
+.v-application .text-h6 {
+  font-size: 1.25rem !important;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em !important;
+  font-family: 'Titillium Web', sans-serif !important;
 }
-
+.v-application--is-ltr .v-toolbar__content > .v-btn.v-btn--icon:first-child + .v-toolbar__title, .v-application--is-ltr .v-toolbar__extension > .v-btn.v-btn--icon:first-child + .v-toolbar__title {
+    padding-left: 0px!important;
+}
 </style>

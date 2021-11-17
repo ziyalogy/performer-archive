@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="space-around" class="mt-4 ml-4 mr-4">
-      <v-col cols="12" sm="6" md="8">
+      <v-col cols="12" sm="12" md="12" lg="8">
         <v-card color="primary" flat width="auto">
           <v-img
             cover
@@ -17,7 +17,7 @@
             <v-card-title class="white--text mb-4">
               <div v-if="artist.artistImage">
                 <v-avatar size="100">
-                  <v-img :src="`/${artist.artistImage}`"></v-img>
+                  <v-img :src="`${artist.artistImage}`"></v-img>
                 </v-avatar>
               </div>
             </v-card-title>
@@ -54,10 +54,13 @@
             <v-list-item>
               <v-list-item-action>
                 <v-icon class="secondary--text lighten-1">mdi-calendar</v-icon>
-              </v-list-item-action> 
+              </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title><strong>Birthdate: </strong>{{ artist.dateOfBirth }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>Birthdate: </strong
+                  >{{ artist.dateOfBirth }}</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
 
@@ -69,7 +72,9 @@
               </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title><strong>Active since:</strong> {{ artist.activeSince }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>Active since:</strong> {{ artist.activeSince }}
+                </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
 
@@ -81,7 +86,10 @@
               </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title><strong>Genres: </strong>{{ artist.genres }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>Genres: </strong
+                  >{{ artist.genres }}</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
 
@@ -93,7 +101,9 @@
               </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title><strong>Band: </strong>{{ artist.band }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>Band: </strong>{{ artist.band }}</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
             <v-divider inset></v-divider>
@@ -104,7 +114,8 @@
 
               <v-list-item-content>
                 <v-list-item-title
-                  ><strong>Albums:</strong><v-chip class="ma-2" color="primary">
+                  ><strong>Albums:</strong
+                  ><v-chip class="ma-2" color="primary">
                     {{ artist.albums }}
                   </v-chip></v-list-item-title
                 >
@@ -117,61 +128,71 @@
               </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title><strong>Label: </strong>{{ artist.label }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>Label: </strong>{{ artist.label }}</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
             <v-divider inset></v-divider>
+            <!--<v-list-item>
+              <v-list-item-content>
+                <p>
+                  {{ artist.firstName }} {{ artist.lastName }}, an
+                  {{ artist.genres }} performer professionally known as
+                  {{ artist.stageName }} was born on the date of
+                  {{ artist.dateOfBirth }} in {{ artist.district }} District,
+                  Uganda.
+                </p>
+                {{ artist.bio }}
+              </v-list-item-content>
+            </v-list-item>-->
+
             <v-list-item>
+              <v-list-item-content
+                ><div>
+                  <v-dialog v-model="dialog" width="500">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                        Biography
+                      </v-btn>
+                    </template>
 
+                    <v-card class="mt-4">
+                      <v-card-title
+                        class="text-h5 white--text darken-2 primary"
+                      >
+                        {{ artist.firstName }} {{ artist.lastName }} Biography
+                      </v-card-title>
 
-              <v-list-item-content><div >
-    <v-dialog
-      v-model="dialog"
-      width="500"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Biography
-        </v-btn>
-      </template>
+                      <v-card-text class="mt-4">
+                          {{ artist.firstName }} {{ artist.lastName }}, a Ugandan
+                          {{ artist.genres }} performer professionally known as
+                          {{ artist.stageName }} was born on the date of
+                          {{ artist.dateOfBirth }} in
+                          {{ artist.district }} District, Uganda.
+                        {{ artist.bio }}
+                      </v-card-text>
 
-      <v-card class="mt-4">
-        <v-card-title class="text-h5 white--text darken-2 primary">
-          {{ artist.firstName }} {{ artist.lastName }} Biography
-        </v-card-title>
+                      <v-divider></v-divider>
 
-        <v-card-text class="mt-4">
-{{ artist.bio }}        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
-            @click="dialog = false"
-          >
-            Close
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div> </v-list-item-content>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="primary" text @click="dialog = false">
+                          Close
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </div>
+              </v-list-item-content>
             </v-list-item>
           </v-list>
-          
         </v-card>
       </v-col>
-      <v-col cols="6"  md="4">
-        <v-card >
+      <v-col cols="12" sm="12" md="12" lg="4">
+        <v-card>
           <div v-if="artist.artistImage">
-            <v-img :src="`/${artist.artistImage}`" height="300px" dark> </v-img>
+            <v-img :src="`${artist.artistImage}`" height="300px" dark> </v-img>
           </div>
 
           <v-list two-line>
@@ -181,21 +202,24 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title color="primary">{{
-                  artist.artistID
-                }}</v-list-item-title>
+                <v-list-item-title color="primary">
+                  <strong>{{ artist.artistID }}</strong>
+                </v-list-item-title>
                 <v-list-item-subtitle>UgaaMUX Artist ID</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
+
+            <v-divider inset></v-divider>
+
             <v-list-item>
               <v-list-item-icon>
                 <v-icon color="primary"> mdi-phone </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title color="primary">{{
-                  artist.nationalID
-                }}</v-list-item-title>
+                <v-list-item-title color="primary"
+                  ><strong>{{ artist.nationalID }}</strong></v-list-item-title
+                >
                 <v-list-item-subtitle>National ID Number</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -208,9 +232,9 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title color="primary">{{
-                  artist.district
-                }}</v-list-item-title>
+                <v-list-item-title color="primary"
+                  ><strong>{{ artist.district }}</strong></v-list-item-title
+                >
                 <v-list-item-subtitle>Location</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -223,17 +247,22 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{ artist.email }}</v-list-item-title>
+                <v-list-item-title class="text-lowercase"
+                  ><strong>{{ artist.email }}</strong></v-list-item-title
+                >
                 <v-list-item-subtitle>Primary email</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
+            <v-divider inset></v-divider>
             <v-list-item>
               <v-list-item-icon>
                 <v-icon color="primary"> mdi-phone </v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{ artist.phoneNumber }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>{{ artist.phoneNumber }}</strong></v-list-item-title
+                >
                 <v-list-item-subtitle
                   >Primary phone number</v-list-item-subtitle
                 >
@@ -245,9 +274,11 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{
-                  artist.altPhoneNumber
-                }}</v-list-item-title>
+                <v-list-item-title
+                  ><strong>{{
+                    artist.altPhoneNumber
+                  }}</strong></v-list-item-title
+                >
                 <v-list-item-subtitle
                   >Alternative Phone Number</v-list-item-subtitle
                 >

@@ -29,6 +29,7 @@ const artistSchema = mongoose.Schema({
   label: String,
   artistImage: String,
   bio: String,
+  gender: String,
   phoneNumber: String,
   altPhoneNumber: String,
   email: String,

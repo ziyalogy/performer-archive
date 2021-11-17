@@ -23,7 +23,7 @@
     </v-container>
 </template>
 <script>
-import API from '../api';
+import API from '../../api';
 export default {
     data() {
      return{

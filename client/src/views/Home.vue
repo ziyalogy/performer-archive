@@ -1,6 +1,7 @@
 <template v-slot:default="{ hover }">
   <v-container fluid>
     <v-row dense>
+      <v-col class="mt-1" cols="12" xs="12" sm="12" md="12">
       <v-alert
         v-model="alert"
         border="bottom"
@@ -8,15 +9,15 @@
         color="primary"
         dark
         dismissible
-        class="dark--text darken-1"
+        class="dark--text darken-3"
       >
-        A national performing artists' archive for the
-        National Cultural Center in conjuction with Uganda Performing Arts
-        Association of Uganda. 
+        A national performing artists' archive for the National Cultural Center
+        in conjuction with Uganda Performing Arts Association of Uganda.
       </v-alert>
+      </v-col>
     </v-row>
     <v-layout row wrap>
-      <v-col class="mt-1" cols="4">
+      <v-col class="mt-0" cols="12" xs="12" sm="12" md="4">
         <v-card :to="{ name: 'artists' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Artists and Performers</v-card-title
@@ -24,7 +25,7 @@
           <v-img
             class="white--text mb-3 align-end"
             height="200px"
-            src="https://www.sqoop.co.ug/wp-content/uploads/2020/12/132381721_1866586133493256_185363865906333222_n.jpg"
+            src="../assets/artists.jpg"
           >
           </v-img>
 
@@ -40,7 +41,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col class="mt-2 mx-auto" cols="4">
+      <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
         <v-card :to="{ name: 'bands' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Bands and Music Groups
@@ -48,7 +49,7 @@
           <v-img
             class="white--text mb-3 align-end"
             height="200px"
-            src="https://eagle.co.ug/wp-content/uploads/2017/05/Afrigo-Band-does-their-thing-768x512.jpg"
+            src="../assets/bands.jpg"
           >
           </v-img>
 
@@ -64,15 +65,15 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col class="mt-2 mx-auto" cols="4">
+      <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
         <v-card :to="{ name: 'labels' }" class="mx-auto">
-          <v-card-title class="primary darken-2  white--text"
+          <v-card-title class="primary darken-2 white--text"
             >Record Labels and Distribution
           </v-card-title>
           <v-img
             class="white--text mb-3 align-end"
             height="200px"
-            src="https://www.sqoop.co.ug/wp-content/uploads/2019/11/zawi.jpg"
+            src="../assets/labels.jpg"
           >
           </v-img>
 
@@ -107,8 +108,5 @@ export default {
     this.bands = await API.getAllBands();
     this.labels = await API.getAllLabels();
   },
-  
 };
-
-
 </script>
