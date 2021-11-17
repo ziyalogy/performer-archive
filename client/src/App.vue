@@ -79,7 +79,7 @@ v-app {
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color="secondary" app>
+    <v-app-bar color="secondary" app>      
       <v-app-bar-nav-icon
         class="font-weight-bold white--text"
         @click="drawer = !drawer"
@@ -104,6 +104,10 @@ v-app {
       </v-list-item>
         </v-toolbar-title
       >
+      <v-spacer></v-spacer>
+      <v-btn :to="{ name: 'account' }" 
+       class="text-capitalize secondary lighten-1" color=""  text dark>Account</v-btn>
+
     </v-app-bar>
 
     <v-main>
@@ -171,22 +175,22 @@ export default {
 </script>
 <style>
 .v-application {
-  font-family: 'Titillium Web', sans-serif !important;
-  font-size: 18px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 16px !important;
   line-height: 1.8;
   color: #3c3c3c;
 }
 .headline,
 .title,
 .subheading {
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: 'DM Sans', sans-serif !important;
 }
 .v-application .text-h6 {
   font-size: 1.25rem !important;
   font-weight: 500;
   line-height: 2rem;
   letter-spacing: 0.0125em !important;
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: 'DM Sans', sans-serif !important;
 }
 .v-application--is-ltr .v-toolbar__content > .v-btn.v-btn--icon:first-child + .v-toolbar__title, .v-application--is-ltr .v-toolbar__extension > .v-btn.v-btn--icon:first-child + .v-toolbar__title {
     padding-left: 0px!important;
