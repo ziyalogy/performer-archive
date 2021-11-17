@@ -7,111 +7,38 @@ v-app {
 
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      class="dark--text primary darken-1"
-      app
-    >
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-subheader class="text--disabled font-weight-bold"
-          >Archive Navigation</v-subheader
-        >
-        <v-list-item-group color="primary">
-          <v-list-item v-for="(item, i) in items" :key="i" :to="item.link">
-            <v-list-item-icon>
-              <v-icon
-                class="darken-4 textcolor--text"
-                v-text="item.icon"
-              ></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title
-                class="font-weight-bold textcolor--text"
-                v-text="item.text"
-              ></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-      <v-divider></v-divider>
-      <v-list dense>
-        <v-subheader class="text--disabled font-weight-bold"
-          >Clerk Account</v-subheader
-        >
-        <v-list-item-group color="primary">
-          <v-list-item v-for="(page, i) in pages" :to="page.link" :key="i">
-            <v-list-item-icon>
-              <v-icon
-                class="font-weight-bold textcolor--text"
-                v-text="page.icon"
-              ></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title
-                class="font-weight-bold textcolor--text"
-                v-text="page.text"
-              ></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-      <v-divider></v-divider>
-      <v-list dense>
-        <v-subheader class="font-weight-bold text--disabled"
-          >About UGAAMUX</v-subheader
-        >
-        <v-list-item-group color="primary">
-          <v-list-item v-for="(info, i) in infos" :key="i" :to="info.link">
-            <v-list-item-icon>
-              <v-icon class="textcolor--text" v-text="info.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title
-                class="font-weight-bold textcolor--text"
-                v-text="info.text"
-              ></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-app-bar color="secondary" app>      
-      <v-app-bar-nav-icon
-        class="font-weight-bold white--text"
-        @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
-
-      <v-toolbar-title class="white--text">
-              <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title
-            class="
-              appname
-              text-left
-              white--text
-              darken-2
-              font-weight-bold
-              display-1
-            "
-          >
-            UgaaMux</v-list-item-title
-          >
-        </v-list-item-content>
-      </v-list-item>
-        </v-toolbar-title
-      >
-      <v-spacer></v-spacer>
-      <v-btn :to="{ name: 'account' }" 
-       class="text-capitalize secondary lighten-1" color=""  text dark>Account</v-btn>
-
-    </v-app-bar>
+    <Menu />
 
     <v-main>
       <router-view></router-view>
+      <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Privacy Policy
+        </v-card-title>
+
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     </v-main>
     <v-footer padless>
       <v-col class="font-weight-bold text--disabled text-right" cols="12">
@@ -131,43 +58,18 @@ v-app {
 </template>
 
 <script>
+import Menu from './components/Menu.vue';
+
 export default {
+  name: 'App',
+  components: {
+    Menu,
+
+  },
   data: () => ({
     drawer: null,
-    items: [
-      { text: 'Home', icon: 'mdi-home-outline', link: '/' },
-      {
-        text: 'Artists',
-        icon: 'mdi-account-tie-voice-outline',
-        link: '/artists',
-      },
-      { text: 'Bands', icon: 'mdi-account-group-outline', link: '/bands' },
-      {
-        text: 'Record Labels',
-        icon: 'mdi-folder-music-outline',
-        link: '/labels',
-      },
-      { text: 'Albums', icon: 'mdi-record-circle-outline', link: '/albums' },
-      { text: 'Songs', icon: 'mdi-music-circle-outline', link: '/songs' },
-      {
-        text: 'Add Album',
-        icon: 'mdi-music-circle-outline',
-        link: '/dashboard/add/album',
-      },
-    ],
-    pages: [
-      { text: 'Sign In', icon: 'mdi-login-variant', link: '/account' },
-      { text: 'Sign Up', icon: 'mdi-account-plus-outline', link: '/join' },
-    ],
-    infos: [
-      {
-        text: 'Project Info',
-        icon: 'mdi-archive-music-outline',
-        link: '/about',
-      },
-      { text: 'Contact Us', icon: 'mdi-email-plus-outline', link: '/contact' },
-    ],
   }),
+
   mounted() {
     document.title = 'UgaaMUX | Performing Artists Archive, from the Pearl';
   },
@@ -192,7 +94,14 @@ export default {
   letter-spacing: 0.0125em !important;
   font-family: 'DM Sans', sans-serif !important;
 }
-.v-application--is-ltr .v-toolbar__content > .v-btn.v-btn--icon:first-child + .v-toolbar__title, .v-application--is-ltr .v-toolbar__extension > .v-btn.v-btn--icon:first-child + .v-toolbar__title {
-    padding-left: 0px!important;
+.v-application--is-ltr
+  .v-toolbar__content
+  > .v-btn.v-btn--icon:first-child
+  + .v-toolbar__title,
+.v-application--is-ltr
+  .v-toolbar__extension
+  > .v-btn.v-btn--icon:first-child
+  + .v-toolbar__title {
+  padding-left: 0px !important;
 }
 </style>

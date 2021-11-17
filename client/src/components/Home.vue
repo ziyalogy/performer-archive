@@ -1,6 +1,6 @@
 <template v-slot:default="{ hover }">
 
-  <v-container fluid>
+  <v-container>
     <v-row dense>
       <v-col class="mt-1" cols="12" xs="12" sm="12" md="12">
       <v-alert
@@ -97,6 +97,7 @@
 <script>
 import API from '../api';
 export default {
+    name:'Home',
   data() {
     return {
       artists: [],

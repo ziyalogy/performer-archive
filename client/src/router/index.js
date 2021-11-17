@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 import Artists from '../views/Artists.vue'
 import Artist from '../views/Artist.vue'
 import Account from '../views/Account.vue'
 import AddArtist from '../views/AddArtist.vue'
 import AddAlbum from '../views/dashboard/AddAlbum.vue'
+import Login from '../components/Login.vue'
+import Register from '../components/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +16,16 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register,
   },
   {
     path: '/account',
