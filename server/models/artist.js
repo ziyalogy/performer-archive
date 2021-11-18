@@ -4,19 +4,19 @@ const artistSchema = mongoose.Schema({
   nationalID: String,
   firstName: {
     type: String,
-    uppercase: true
- },
+    uppercase: true,
+  },
   lastName: {
     type: String,
-    uppercase: true
- },
+    uppercase: true,
+  },
   middleName: {
     type: String,
-    uppercase: true
- },
+    uppercase: true,
+  },
   otherName: {
     type: String,
-    uppercase: true
+    uppercase: true,
   },
   stageName: String,
   dateOfBirth: String,
@@ -33,12 +33,10 @@ const artistSchema = mongoose.Schema({
   phoneNumber: String,
   altPhoneNumber: String,
   email: String,
-  uprsCode: String,
-  uprsType: String,
   created: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = mongoose.model("Artist", artistSchema);
+module.exports = mongoose.model('Artist', artistSchema);

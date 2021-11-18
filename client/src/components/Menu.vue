@@ -2,12 +2,8 @@
 
 
     <v-app-bar flat short tile color="secondary" app>
-        <v-toolbar-side-icon @click="sidebar = !sidebar">
-        </v-toolbar-side-icon>
-              <v-app-bar-nav-icon
-        class="font-weight-bold white--text"
-        @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
+
+
  <v-toolbar-title class="white--text">
               <v-list-item>
         <v-list-item-content>

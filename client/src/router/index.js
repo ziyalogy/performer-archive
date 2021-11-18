@@ -4,10 +4,10 @@ import Home from '../components/Home.vue'
 import Artists from '../views/Artists.vue'
 import Artist from '../views/Artist.vue'
 import Account from '../views/Account.vue'
-import AddArtist from '../views/AddArtist.vue'
 import AddAlbum from '../views/dashboard/AddAlbum.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
+import AddArtist from '../components/AddArtist.vue'
 
 Vue.use(VueRouter)
 
@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path: '/artist/add',
-    name: 'add-artist',
+    name: 'AddArtist',
     component: AddArtist,
   },
   {

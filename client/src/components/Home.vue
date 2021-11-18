@@ -19,7 +19,7 @@
     </v-row>
     <v-layout row wrap>
       <v-col class="mt-0" cols="12" xs="12" sm="12" md="4">
-        <v-card :to="{ name: 'artists' }" class="mx-auto">
+        <v-card flat :to="{ name: 'artists' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Artists and Performers</v-card-title
           >
@@ -67,7 +67,7 @@
         </v-card>
       </v-col>
       <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
-        <v-card :to="{ name: 'labels' }" class="mx-auto">
+        <v-card flat :to="{ name: 'labels' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Record Labels and Distribution
           </v-card-title>
