@@ -1,4 +1,4 @@
-<template v-slot:activator="{ on, attrs }">
+<template>
 
 
     <v-app-bar flat short tile color="secondary" app>
@@ -40,8 +40,7 @@
         color=""
         text
         dark
-        v-bind="attrs"
-          v-on="on"
+        
         >Account</v-btn
       >
     </v-app-bar>

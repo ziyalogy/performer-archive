@@ -15,19 +15,19 @@
               <v-text-field
               required
                 label="Artist ID"
-                v-model="artistID"
+                v-model="artist.artistID"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="National ID"
-                v-model="nationalID"
+                v-model="artist.nationalID"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Stage Name"
-                v-model="stageName"
+                v-model="artist.stageName"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
@@ -35,19 +35,19 @@
             <v-row>
               <v-text-field
                 label="First name"
-                v-model="firstName"
+                v-model="artist.firstName"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Middle name"
-                v-model="middleName"
+                v-model="artist.middleName"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Last Name"
-                v-model="lastName"
+                v-model="artist.lastName"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
@@ -55,19 +55,19 @@
             <v-row>
               <v-text-field
                 label="Date of Birth"
-                v-model="dateOfBirth"
+                v-model="artist.dateOfBirth"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Gender"
-                v-model="gender"
+                v-model="artist.gender"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Location"
-                v-model="district"
+                v-model="artist.district"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
@@ -75,19 +75,19 @@
             <v-row>
               <v-text-field
                 label="Artist category"
-                v-model="category"
+                v-model="artist.category"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Active since"
-                v-model="activeSince"
+                v-model="artist.activeSince"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Genres"
-                v-model="genres"
+                v-model="artist.genres"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
@@ -95,59 +95,40 @@
             <v-row>
               <v-text-field
                 label="Band"
-                v-model="band"
+                v-model="artist.band"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Albums"
-                v-model="albums"
+                v-model="artist.albums"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Record Label"
-                v-model="label"
+                v-model="artist.label"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
             </v-row>
-            <v-row>
-              <v-text-field
-                label="Band"
-                v-model="band"
-                prepend-icon="mdi-note"
-                :rules="rules"
-              ></v-text-field>
-              <v-text-field
-                label="Albums"
-                v-model="albums"
-                prepend-icon="mdi-account-multiple-plus "
-                :rules="rules"
-              ></v-text-field>
-              <v-text-field
-                label="Record Label"
-                v-model="label"
-                prepend-icon="mdi-calendar-range "
-                :rules="rules"
-              ></v-text-field>
-            </v-row>
+
             <v-row>
               <v-text-field
                 label="Phone Number"
-                v-model="phoneNumber"
+                v-model="artist.phoneNumber"
                 prepend-icon="mdi-note"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Alternate Phone Number"
-                v-model="altPhoneNumber"
+                v-model="artist.altPhoneNumber"
                 prepend-icon="mdi-account-multiple-plus "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Email Address"
-                v-model="email"
+                v-model="artist.email"
                 prepend-icon="mdi-calendar-range "
                 :rules="rules"
               ></v-text-field>
@@ -156,7 +137,7 @@
                 <v-col cols="12" md="6" xs="12" sm="12">
               <v-textarea
                 label="Artist biography"
-                v-model="bio"
+                v-model="artist.bio"
                 prepend-icon="mdi-note-plus"
                 :rules="rules"
               ></v-textarea>
@@ -189,7 +170,7 @@ export default {
   data() {
     return {
       rules: [(value) => !!value || 'This field is required'],
-      album: {
+      artist: {
         artistID: '',
         nationalID: '',
         firstName: '',
@@ -244,7 +225,7 @@ export default {
       if (this.$refs.form.validate()) {
         const response = await API.addArtist(formData);
         this.$router.push({
-          name: 'Artists',
+          name: 'AddArtist',
           params: { message: response.message },
         });
       }

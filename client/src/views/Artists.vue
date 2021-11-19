@@ -24,7 +24,7 @@
       >
       <template v-slot:top>
       <v-toolbar
-        flat
+        text
       >
         <v-toolbar-title>Artists</v-toolbar-title>
         <v-divider
@@ -39,8 +39,7 @@
               color="primary"
               dark
               class="mb-2"
-              v-bind="attrs"
-              v-on="on"
+     
             >
               New Artist
             </v-btn>
