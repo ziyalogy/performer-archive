@@ -2,6 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import Artists from '../views/Artists.vue'
+import Bands from '../views/Bands.vue'
+import Labels from '../views/Labels.vue'
+import Band from '../views/Band.vue'
+import Label from '../views/Labels.vue'
 import Artist from '../views/Artist.vue'
 import Account from '../views/Account.vue'
 import AddAlbum from '../views/dashboard/AddAlbum.vue'
@@ -52,6 +56,27 @@ const routes = [
     name: 'artist',
     component:Artist,
   },
+  {
+    path: '/bands',
+    name: 'bands',
+    component:Bands,
+  },
+  {
+    path: '/band/:id',
+    name: 'band',
+    component:Band,
+  },
+  {
+    path: '/labels',
+    name: 'Labels',
+    component:Labels,
+  },
+  {
+    path: '/label/:id',
+    name: 'label',
+    component:Label,
+  },
+
   {
     path: '/about',
     name: 'about',

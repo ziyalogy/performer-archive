@@ -16,19 +16,19 @@
               required
                 label="Artist ID"
                 v-model="artist.artistID"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-format-list-numbered"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="National ID"
                 v-model="artist.nationalID"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-card-account-details-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Stage Name"
                 v-model="artist.stageName"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-account-star-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
@@ -36,19 +36,19 @@
               <v-text-field
                 label="First name"
                 v-model="artist.firstName"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-account-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Middle name"
                 v-model="artist.middleName"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-account-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Last Name"
                 v-model="artist.lastName"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-account-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
@@ -56,19 +56,19 @@
               <v-text-field
                 label="Date of Birth"
                 v-model="artist.dateOfBirth"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-calendar-account-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Gender"
                 v-model="artist.gender"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-gender-male-female "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Location"
                 v-model="artist.district"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-map-marker-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
@@ -76,19 +76,19 @@
               <v-text-field
                 label="Artist category"
                 v-model="artist.category"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-account-music-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Active since"
                 v-model="artist.activeSince"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-calendar-question"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Genres"
                 v-model="artist.genres"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-music-box-multiple-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
@@ -96,19 +96,19 @@
               <v-text-field
                 label="Band"
                 v-model="artist.band"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-account-group-outline"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Albums"
                 v-model="artist.albums"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-folder-music-outline "
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Record Label"
                 v-model="artist.label"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-book-music-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
@@ -117,19 +117,19 @@
               <v-text-field
                 label="Phone Number"
                 v-model="artist.phoneNumber"
-                prepend-icon="mdi-note"
+                prepend-icon="mdi-cellphone-wireless"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Alternate Phone Number"
                 v-model="artist.altPhoneNumber"
-                prepend-icon="mdi-account-multiple-plus "
+                prepend-icon="mdi-cellphone-wireless"
                 :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="Email Address"
                 v-model="artist.email"
-                prepend-icon="mdi-calendar-range "
+                prepend-icon="mdi-email-outline"
                 :rules="rules"
               ></v-text-field>
             </v-row>
