@@ -67,7 +67,7 @@
         </v-card>
       </v-col>
       <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
-        <v-card flat :to="{ name: 'labels' }" class="mx-auto">
+        <v-card text :to="{ name: 'labels' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Record Labels and Distribution
           </v-card-title>
@@ -78,7 +78,7 @@
           >
           </v-img>
 
-          <v-btn flat outlined class="ml-4" small color="primary">
+          <v-btn text outlined class="ml-4" small color="primary">
             Explore {{ labels.length }} Labels
           </v-btn>
 
