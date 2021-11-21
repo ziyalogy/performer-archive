@@ -1,10 +1,10 @@
 <template v-slot:default="{ hover }">
 
-  <v-container fluid>
+  <v-container>
     <v-row dense>
       <v-col class="mt-1" cols="12" xs="12" sm="12" md="12">
       <v-alert
-        v-model="alert"
+        
         border="bottom"
         close-text="Close Alert"
         color="primary"
@@ -19,7 +19,7 @@
     </v-row>
     <v-layout row wrap>
       <v-col class="mt-0" cols="12" xs="12" sm="12" md="4">
-        <v-card :to="{ name: 'artists' }" class="mx-auto">
+        <v-card text :to="{ name: 'artists' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Artists and Performers</v-card-title
           >
@@ -43,7 +43,7 @@
         </v-card>
       </v-col>
       <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
-        <v-card :to="{ name: 'bands' }" class="mx-auto">
+        <v-card :to="{ path: 'bands' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Bands and Music Groups
           </v-card-title>
@@ -55,7 +55,7 @@
           </v-img>
 
           <v-btn class="ml-4" outlined small color="primary">
-            Explore {{ bands.length }} bands
+            Explore bands
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -67,7 +67,7 @@
         </v-card>
       </v-col>
       <v-col class="mt-0 mx-auto" cols="12" xs="12" sm="12" md="4">
-        <v-card :to="{ name: 'labels' }" class="mx-auto">
+        <v-card text :to="{ path: 'labels' }" class="mx-auto">
           <v-card-title class="primary darken-2 white--text"
             >Record Labels and Distribution
           </v-card-title>
@@ -78,8 +78,8 @@
           >
           </v-img>
 
-          <v-btn flat outlined class="ml-4" small color="primary">
-            Explore {{ labels.length }} Labels
+          <v-btn text outlined class="ml-4" small color="primary">
+            Explore Labels
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -100,14 +100,10 @@ export default {
   data() {
     return {
       artists: [],
-      bands: [],
-      labels: [],
     };
   },
   async created() {
     this.artists = await API.getAllArtists();
-    this.bands = await API.getAllBands();
-    this.labels = await API.getAllLabels();
   },
 };
 </script>

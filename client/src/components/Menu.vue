@@ -1,9 +1,5 @@
 <template>
-
-
     <v-app-bar flat short tile color="secondary" app>
-
-
  <v-toolbar-title class="white--text">
               <v-list-item>
         <v-list-item-content>
@@ -56,8 +52,6 @@ export default {
       menuItems: [
           { title: 'Home', path: '/', icon: 'face' },
           { title: 'Artists', path: '/artists', icon: 'face' },
-          { title: 'Bands', path: '/bands', icon: 'lock_open' },
-          { title: 'Labels', path: '/labels', icon: 'lock_open' }
      ]
     }
   },

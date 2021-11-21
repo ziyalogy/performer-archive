@@ -17,7 +17,7 @@
             <v-card-title class="white--text mb-4">
               <div v-if="artist.artistImage">
                 <v-avatar size="100">
-                  <v-img :src="`${artist.artistImage}`"></v-img>
+                  <v-img :src="`/${artist.artistImage}`"></v-img>
                 </v-avatar>
               </div>
             </v-card-title>
@@ -192,7 +192,7 @@
       <v-col cols="12" sm="12" md="12" lg="4">
         <v-card>
           <div v-if="artist.artistImage">
-            <v-img :src="`${artist.artistImage}`" height="300px" dark> </v-img>
+            <v-img :src="`/${artist.artistImage}`" height="300px" dark> </v-img>
           </div>
 
           <v-list two-line>

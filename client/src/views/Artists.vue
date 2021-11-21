@@ -1,6 +1,15 @@
 <template v-for="artist in artists" :key="artist._id" :items="artists">
 
   <v-container>
+        <v-alert
+      dense
+      text
+      dismissible
+      type="success"
+      v-if="this.$route.params.message"
+    >
+       <strong>{{this.$route.params.fName}} {{this.$route.params.lName}}</strong>{{this.$route.params.message}}
+    </v-alert>
     <v-card>
       <v-card-title class="font-weight-bold secondary--text">
         Indexed {{ artists.length }} perfomers
@@ -35,7 +44,7 @@
         <v-spacer></v-spacer>
    
           <template>
-            <v-btn :to="{ name: 'AddArtist' }"
+            <v-btn :to="{ name: 'addartist' }"
               color="primary"
               dark
               class="mb-2"
@@ -49,7 +58,6 @@
         <template #item._id="{ item }">
           <v-btn
             :to="`artist/${item._id}`"
-            flat
             outlined
             class="ml-4"
             small
