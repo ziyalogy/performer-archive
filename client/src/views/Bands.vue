@@ -1,4 +1,4 @@
-<template v-for="artist in artists" :key="artist._id" :items="artists">
+<template v-for="band in bands" :key="band._id" :items="bands">
 
   <v-container>
         <v-alert
@@ -12,7 +12,7 @@
     </v-alert>
     <v-card>
       <v-card-title class="font-weight-bold secondary--text">
-        Indexed {{ artists.length }} perfomers
+        Indexed {{ bands.length }} bands
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -25,9 +25,9 @@
       
       <v-data-table
         loading
-        loading-text="Populating artists data..."
+        loading-text="Populating bands data..."
         :headers="headers"
-        :items="artists"
+        :items="bands"
         :search="search"
         
       >
@@ -35,7 +35,7 @@
       <v-toolbar
         text
       >
-        <v-toolbar-title>Artists</v-toolbar-title>
+        <v-toolbar-title>Bands</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -44,20 +44,20 @@
         <v-spacer></v-spacer>
    
           <template>
-            <v-btn :to="{ name: 'addartist' }"
+            <v-btn :to="{ name: 'addband' }"
               color="primary"
               dark
               class="mb-2"
      
             >
-              New Artist
+              New Band
             </v-btn>
           </template>
           </v-toolbar>
     </template>
         <template #item._id="{ item }">
           <v-btn
-            :to="`artist/${item._id}`"
+            :to="`band/${item._id}`"
             outlined
             class="ml-4"
             small
@@ -92,12 +92,12 @@ export default {
         { text: 'Band', value: 'band' },
         { text: 'Profile', value: '_id' },
       ],
-      artists: [],
+      bands: [],
     };
   },
 
   async created() {
-    this.artists = await API.getAllArtists();
+    this.bands = await API.getAllBands();
   },
 };
 </script>

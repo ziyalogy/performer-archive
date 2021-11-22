@@ -55,7 +55,7 @@
           </v-img>
 
           <v-btn class="ml-4" outlined small color="primary">
-            Explore bands
+            Explore {{ bands.length }} bands
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -79,7 +79,7 @@
           </v-img>
 
           <v-btn text outlined class="ml-4" small color="primary">
-            Explore Labels
+            Explore {{ labels.length }} Labels
           </v-btn>
 
           <v-card-text class="text--primary">
@@ -100,10 +100,14 @@ export default {
   data() {
     return {
       artists: [],
+      bands: [],
+      labels: [],
     };
   },
   async created() {
     this.artists = await API.getAllArtists();
+        this.bands = await API.getAllBands();
+    this.labels = await API.getAllLabels();
   },
 };
 </script>

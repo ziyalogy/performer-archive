@@ -2,6 +2,7 @@ const Album = require('../models/album');
 const Artist = require('../models/artist');
 const Band = require('../models/band');
 const Label = require('../models/label');
+const District = require('../models/district')
 
 
 const fs = require('fs');
@@ -318,6 +319,87 @@ module.exports = class API {
         }
       }
       res.status(200).json({ message: 'Record label removed successfully.' });
+    } catch (err) {
+      res.status(404).json({ message: err.message });
+    }
+  }
+
+  /* D I S T R I C T S*/
+
+  //fetch all districts
+  static async fetchAllDistricts(req, res) {
+    try {
+      const districts = await District.find();
+      res.status(200).json(districts);
+    } catch (err) {
+      res.status(404).json({ message: err.message });
+    }
+  }
+  //fetch district by ID
+  static async fetchDistrictByID(req, res) {
+    const id = req.params.id;
+    try {
+      const district = await District.findById(id);
+      res.status(200).json(district);
+    } catch (err) {
+      res.status(404).json({ message: err.message });
+    }
+  }
+
+  //Create an district
+  static async addDistrict(req, res) {
+    const district = req.body;
+    const profileImage = req.file.filename;
+    district.districtImage = profileImage;
+
+    try {
+      await District.create(district);
+      res.status(201).json({ message: 'District added successfully.' });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  }
+
+  //Update an district
+  static async updateDistrict(req, res) {
+    const id = req.params.id;
+    let newDistrictImage = '';
+    if (req.file) {
+      newDistrictImage = req.file.filename;
+      try {
+        fs.unlinkSync('./uploads' + req.body.oldDistrictImage);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      newDistrictImage = req.body.oldDistrictImage;
+    }
+    const districtUpdate = req.body;
+    districtUpdate.districtImage = newDistrictImage;
+
+    try {
+      await District.findByIdAndUpdate(id, districtUpdate);
+      res
+        .status(200)
+        .json({ message: 'District information updated successfully.' });
+    } catch (err) {
+      res.status(404).json({ message: err.message });
+    }
+  }
+
+  //Delete an district
+  static async deleteDistrict(req, res) {
+    const id = req.params.id;
+    try {
+      const result = await District.findByIdAndDelete(id);
+      if (result.districtImage != '') {
+        try {
+          fs.unlinkSync('./uploads/' + result.districtImage);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      res.status(200).json({ message: 'District deleted successfully' });
     } catch (err) {
       res.status(404).json({ message: err.message });
     }

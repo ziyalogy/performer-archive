@@ -3,21 +3,25 @@
     <v-row no-gutter>
       <v-col sm-10 class="mx-auto">
         <v-card class="pa-5">
-          <v-card-title class="primary dark rounded white--text darken-1" border="bottom" color="">Add new Artist</v-card-title>
+          <v-card-title
+            class="primary dark rounded white--text darken-1"
+            border="bottom"
+            color=""
+            >Add new Artist</v-card-title
+          >
           <v-divider class="primary mt-4"></v-divider>
           <v-form
             ref="form"
             @submit.prevent="submitForm"
-            class="lightaccent pa-6"
+            class="lightaccent rounded pa-6"
             enctype="multipart/form-data"
           >
             <v-row>
               <v-text-field
-              required
+                disabled
                 label="Artist ID"
                 v-model="artist.artistID"
                 prepend-icon="mdi-format-list-numbered"
-                :rules="rules"
               ></v-text-field>
               <v-text-field
                 label="National ID"
@@ -58,13 +62,16 @@
                 v-model="artist.dateOfBirth"
                 prepend-icon="mdi-calendar-account-outline"
                 :rules="rules"
+                type="date"
               ></v-text-field>
-              <v-text-field
-                label="Gender"
+              <v-select
+                :items="genders"
+                prepend-icon="mdi-earth"
+                label="Select gender"
                 v-model="artist.gender"
-                prepend-icon="mdi-gender-male-female "
                 :rules="rules"
-              ></v-text-field>
+                filled
+              ></v-select>
               <v-text-field
                 label="Location"
                 v-model="artist.district"
@@ -73,32 +80,36 @@
               ></v-text-field>
             </v-row>
             <v-row>
-              <v-text-field
+              <v-select
+                :items="categories"
+                prepend-icon="mdi-earth"
                 label="Artist category"
                 v-model="artist.category"
-                prepend-icon="mdi-account-music-outline"
                 :rules="rules"
-              ></v-text-field>
+                filled
+              ></v-select>
               <v-text-field
                 label="Active since"
                 v-model="artist.activeSince"
                 prepend-icon="mdi-calendar-question"
                 :rules="rules"
+                type="date"
               ></v-text-field>
               <v-text-field
                 label="Genres"
                 v-model="artist.genres"
                 prepend-icon="mdi-music-box-multiple-outline"
-                :rules="rules"
               ></v-text-field>
             </v-row>
             <v-row>
-              <v-text-field
+              <v-select v-if="bands"
+                :items="bands"
                 label="Band"
+                filled
                 v-model="artist.band"
                 prepend-icon="mdi-account-group-outline"
                 :rules="rules"
-              ></v-text-field>
+              ></v-select>
               <v-text-field
                 label="Albums"
                 v-model="artist.albums"
@@ -134,31 +145,32 @@
               ></v-text-field>
             </v-row>
             <v-row>
-                <v-col cols="12" md="6" xs="12" sm="12">
-              <v-textarea
-                label="Artist biography"
-                v-model="artist.bio"
-                prepend-icon="mdi-note-plus"
-                :rules="rules"
-              ></v-textarea>
-                </v-col>
-                <v-col cols="12" md="6" xs="12" sm="12">
-              <v-file-input
-                @change="selectFile"
-                label="Artist Image"
-                show-size
-                counter
-                multiple
-                prepend-icon="mdi-image-plus"
-                :rules="rules"
-              ></v-file-input>
-                </v-col>
+              <v-col cols="12" md="6" xs="12" sm="12">
+                <v-textarea
+                  label="Artist biography"
+                  v-model="artist.bio"
+                  prepend-icon="mdi-note-plus"
+                  :rules="rules"
+                ></v-textarea>
+              </v-col>
+              <v-col cols="12" md="6" xs="12" sm="12">
+                <v-file-input
+                  @change="selectFile"
+                  label="Artist Image"
+                  show-size
+                  counter
+                  multiple
+                  prepend-icon="mdi-image-plus"
+                  :rules="rules"
+                ></v-file-input>
+              </v-col>
             </v-row>
-                      <v-row>
-              <v-btn type="submit" class="mt-3" color="primary">Add Artist</v-btn>
-          </v-row>
+            <v-row>
+              <v-btn type="submit" class="mt-3" color="primary"
+                >Add Artist</v-btn
+              >
+            </v-row>
           </v-form>
-
         </v-card>
       </v-col>
     </v-row>
@@ -194,11 +206,30 @@ export default {
         email: '',
       },
       artistImage: '',
+      categories: [
+        'Singer',
+        'Rapper',
+        'Lyricist',
+        'Producer',
+        'Comedian',
+        'Filmaker',
+      ],
+      genders: ['Male', 'Female'],
+      bands: null,
+      labels: [],
+      districts: [],
+      allArtists: [],
     };
   },
   methods: {
     selectFile(file) {
       this.artistImage = file[0];
+    },
+    
+    async created() {
+      const response = await fetch("http://localhost:1992/api/bands/")
+      const { data: bands } = await response.json()
+      this.bands = bands
     },
     async submitForm() {
       const formData = new FormData();
@@ -224,8 +255,12 @@ export default {
       if (this.$refs.form.validate()) {
         const response = await API.addArtist(formData);
         this.$router.push({
-          path: '/artists',
-          params: {fName: `${this.artist.firstName}`, lName:`${this.artist.lastName}`, message: ' has been added to the archive successfully!' },
+          name: 'artists',
+          params: {
+            fName: `${this.artist.firstName}`,
+            lName: `${this.artist.lastName}`,
+            message: ' has been added to the archive successfully!',
+          },
         });
       }
     },

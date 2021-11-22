@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Artists from '../views/Artists.vue'
 import Artist from '../views/Artist.vue'
+import Bands from '../views/Bands.vue'
+import Labels from '../views/Labels'
 import Account from '../views/Account.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
@@ -32,7 +34,7 @@ const routes = [
     component: Account,
   },
   {
-    path: '/add/',
+    path: '/add/artist',
     name: 'addartist',
     component: AddArtist,
   },
@@ -46,6 +48,18 @@ const routes = [
     path: '/artist/:id',
     name: 'artist',
     component: Artist,
+  },
+  
+  {
+    path: '/bands',
+    name: 'bands',
+    component: Bands,
+  },
+  
+  {
+    path: '/labels',
+    name: 'labels',
+    component: Labels,
   },
 ]
 

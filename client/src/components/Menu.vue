@@ -52,6 +52,8 @@ export default {
       menuItems: [
           { title: 'Home', path: '/', icon: 'face' },
           { title: 'Artists', path: '/artists', icon: 'face' },
+          { title: 'Bands', path: '/bands', icon: 'face' },
+           { title: 'Labels', path: '/labels', icon: 'face' },
      ]
     }
   },
