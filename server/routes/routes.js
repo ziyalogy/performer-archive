@@ -31,6 +31,10 @@ let uploadBandLogo = multer({
 let uploadLabelLogo = multer({
     storage: storage,
 }).single('logoOflabel');
+
+let districtImage = multer({
+  storage: storage,
+}).single('districtImage');
   
 //API root
 router.get('/', API.apiHome);
@@ -62,6 +66,14 @@ router.get('/label/:id', API.fetchLabelByID);
 router.post('/label/', uploadLabelLogo, API.addLabel);
 router.patch('/label/:id', uploadLabelLogo, API.updateLabel);
 router.delete('/label/:id', API.deleteLabel);
+
+//District routes
+//Record label routes
+router.get('/districts', API.fetchAllDistricts);
+router.get('/district/:id', API.fetchDistrictByID);
+router.post('/district/', districtImage, API.addDistrict);
+router.patch('/district/:id', districtImage, API.updateDistrict);
+router.delete('/district/:id', API.deleteDistrict);
 
 //Song routes
 //User routes

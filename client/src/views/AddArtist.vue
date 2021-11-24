@@ -7,8 +7,8 @@
             class="primary dark rounded white--text darken-1"
             border="bottom"
             color=""
-            >Add new Artist</v-card-title
-          >
+            >Add new
+          </v-card-title>
           <v-divider class="primary mt-4"></v-divider>
           <v-form
             ref="form"
@@ -72,12 +72,16 @@
                 :rules="rules"
                 filled
               ></v-select>
-              <v-text-field
+              <v-select
                 label="Location"
                 v-model="artist.district"
                 prepend-icon="mdi-map-marker-outline"
                 :rules="rules"
-              ></v-text-field>
+                :items="districts"
+                item-text="title"
+                bottom
+                autocomplete
+              ></v-select>
             </v-row>
             <v-row>
               <v-select
@@ -102,7 +106,8 @@
               ></v-text-field>
             </v-row>
             <v-row>
-              <v-select v-if="bands"
+              <v-select
+                v-if="bands"
                 :items="bands"
                 label="Band"
                 filled
@@ -225,11 +230,11 @@ export default {
     selectFile(file) {
       this.artistImage = file[0];
     },
-    
     async created() {
-      const response = await fetch("http://localhost:1992/api/bands/")
-      const { data: bands } = await response.json()
-      this.bands = bands
+      this.allArtists = await API.getAllArtists();
+      this.bands = await API.getAllBands();
+      this.labels = await API.getAllLabels();
+      this.districts = await API.getAllDistricts();
     },
     async submitForm() {
       const formData = new FormData();

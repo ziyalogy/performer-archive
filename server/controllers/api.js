@@ -349,8 +349,8 @@ module.exports = class API {
   //Create an district
   static async addDistrict(req, res) {
     const district = req.body;
-    const profileImage = req.file.filename;
-    district.districtImage = profileImage;
+    const dImage = req.file.filename;
+    district.districtImage = dImage;
 
     try {
       await District.create(district);

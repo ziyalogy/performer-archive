@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const districtSchema = mongoose.Schema({
-  name: String,
+  Name: String,
+  districtImage: String,
   created: {
     type: Date,
     default: Date.now,
