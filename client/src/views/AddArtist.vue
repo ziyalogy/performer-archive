@@ -73,14 +73,11 @@
                 filled
               ></v-select>
               <v-select
-                label="Location"
-                v-model="artist.district"
-                prepend-icon="mdi-map-marker-outline"
-                :rules="rules"
                 :items="districts"
-                item-text="title"
-                bottom
-                autocomplete
+                v-model="districtList"
+                item-text="name"
+                item-value="id"
+                prepend-icon="mdi-map-marker-outline"
               ></v-select>
             </v-row>
             <v-row>
@@ -171,7 +168,7 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-btn type="submit" class="mt-3" color="primary"
+              <v-btn type="submit" width="100%" class="mt-3" color="primary"
                 >Add Artist</v-btn
               >
             </v-row>
@@ -217,10 +214,10 @@ export default {
         'Lyricist',
         'Producer',
         'Comedian',
-        'Filmaker',
+        'Filmmaker',
       ],
       genders: ['Male', 'Female'],
-      bands: null,
+      districtList: null,
       labels: [],
       districts: [],
       allArtists: [],
